@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="sp">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="app.js" type="module"></script>
+    <link rel="stylesheet" href="style.css">
+    <title>Vue Basico Taller</title>
+</head>
+
+<body>
+    <div id="app">
+        <input type="text" v-model="mensaje">
+        <h1>{{mensaje}}</h1>
+        <div>
+            <input type="radio" v-model="objeto" v-bind:value="true">ver
+            <input type="radio" v-model="objeto" v-bind:value="false">No ver
+            <form action="">
+                <input type="text" v-show="objeto" v-model="nuevoobj">
+                <button v-show="objeto" @click.prevent="nuevoobjt">Crear objeto</button>
+                <button v-show="objeto" @click.prevent="clic = true">Modificar</button>
+                <div  v-show="clic">
+                    <input type="text" @click.prevent="nuevoarray" v-model="nuevoarray">
+                    <button v-show="clic" @click.prevent="comienzo">Agregar al comienzo del array</button>
+                    <button v-show="clic" @click.prevent="final">Agregar al final del array</button>
+
+                </div> 
+                <button @click.prevent="elm=true" v-show="objeto">Eliminar</button>
+                    
+                    </div>
+                <ul>
+                    <li v-show="objeto" v-for="(caso,indice) of objetos"><button @click.prevent="eliminar(indice)">x</button>{{caso}}</li>
+                    
+                </ul>
+                <div v-if="elm" v-show="objeto">
+                    <button v-show="elm" @click.prevent="primeroo">Eliminar primer elemento del array</button>
+                    <button v-show="elm" @click.prevent="ultimoo">Eliminar el ultimo elemento del array</button>
+                    <button v-show="mapes = true" @click.prevent="mapeo">mapeo</button>
+                    <ul v-show="mapes">
+                        <li  v-for="(caso,indice) in objetos">{{indice}} {{caso.dato}}</li>
+                    </ul>
+                </div>
+
+        </div>
+</body>
+
+</html>
